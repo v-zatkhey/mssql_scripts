@@ -1,0 +1,1 @@
+alter table dbo.MaterialCalculatedParams add Updated datetime null default getdate();

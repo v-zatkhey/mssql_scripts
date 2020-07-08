@@ -1,0 +1,16 @@
+10.0
+14
+1       SQLCHAR             0       10      "/t"     1     idnumber                                   SQL_Ukrainian_CP1251_CI_AS
+2       SQLCHAR             0       2000    "/t"     2     param_smiles                               SQL_Ukrainian_CP1251_CI_AS
+3       SQLCHAR             0       2000    "/t"     3     param_chemical_name                        SQL_Ukrainian_CP1251_CI_AS
+4       SQLCHAR             0       20      "/t"     4     param_acceptor                             SQL_Ukrainian_CP1251_CI_AS
+5       SQLCHAR             0       20      "/t"     5     param_donor                                SQL_Ukrainian_CP1251_CI_AS
+6       SQLCHAR             0       20      "/t"     6     param_clogp                                SQL_Ukrainian_CP1251_CI_AS
+7       SQLCHAR             0       20      "/t"     7     param_logbb                                SQL_Ukrainian_CP1251_CI_AS
+8       SQLCHAR             0       20      "/t"     8     param_mw                                   SQL_Ukrainian_CP1251_CI_AS
+9       SQLCHAR             0       20      "/t"     9     param_tpsa                                 SQL_Ukrainian_CP1251_CI_AS
+10      SQLCHAR             0       20      "/t"     10    param_fsp3                                 SQL_Ukrainian_CP1251_CI_AS
+11      SQLCHAR             0       20      "/t"     11    param_logs                                 SQL_Ukrainian_CP1251_CI_AS
+12      SQLCHAR             0       20      "/t"     12    param_rotbonds                             SQL_Ukrainian_CP1251_CI_AS
+13      SQLCHAR             0       20      "/t"     13    param_hac                                  SQL_Ukrainian_CP1251_CI_AS
+14      SQLCHAR             0       20      "/t"     14    param_rating                               SQL_Ukrainian_CP1251_CI_AS

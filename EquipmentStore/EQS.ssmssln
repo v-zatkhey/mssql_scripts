@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "EquipmentStore", "EquipmentStore.ssmssqlproj", "{7099E83D-1F3B-4C40-B93A-9DAE16ECDF77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		По умолчанию|Default = По умолчанию|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00000000-0000-0000-0000-000000000000}.По умолчанию|Default.ActiveCfg = По умолчанию
+		{7099E83D-1F3B-4C40-B93A-9DAE16ECDF77}.По умолчанию|Default.ActiveCfg = По умолчанию
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

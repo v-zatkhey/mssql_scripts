@@ -1,0 +1,14 @@
+BACKUP DATABASE SKLAD30 
+ TO DISK = 'D:\BACKUP\TEMP_Work\Sklad30_test.bak'
+   WITH FORMAT, COPY_ONLY ;
+GO
+
+drop database SKLAD30_test;
+go
+
+RESTORE DATABASE SKLAD30_test FROM DISK = 'D:\BACKUP\TEMP_Work\Sklad30_test.bak'
+WITH MOVE 'SKLAD30_Data' TO 'E:\MSSQL\DATA\SKLAD30_Data_test.mdf' 
+    ,MOVE 'SKLAD30_Log' TO 'E:\MSSQL\DATA\SKLAD30_Log_test.ldf'
+    , RESTRICTED_USER
+go
+

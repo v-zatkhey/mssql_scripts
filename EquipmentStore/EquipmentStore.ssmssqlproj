@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="EquipmentStore">
+  <Items>
+    <LogicalFolder Name="Соединения" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="SERVER:sa">
+          <Created>2018-11-22T10:36:27.4500031+02:00</Created>
+          <Type>SQL</Type>
+          <Server>SERVER</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB>SKLAD30</InitialDB>
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Среда Microsoft SQL Server Management Studio - запрос</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Запросы" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="CreateStructure.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>CreateStructure.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Clear.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Clear.sql</FullPath>
+        </FileNode>
+        <FileNode Name="FillDictionary.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>FillDictionary.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Permission.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Permission.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SP_DocState.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>SP_DocState.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SP_Document.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>SP_Document.sql</FullPath>
+        </FileNode>
+        <FileNode Name="InitialRests.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>InitialRests.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SP_Report.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>SP_Report.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Triggers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:SERVER:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>SERVER</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Triggers.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Разное" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

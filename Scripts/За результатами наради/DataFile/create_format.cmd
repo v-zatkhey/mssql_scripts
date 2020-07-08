@@ -1,0 +1,1 @@
+bcp Chest35.dbo._tmp_param_for_chest format nul -f param_chest.fmt -c -U sa -P interrsa
