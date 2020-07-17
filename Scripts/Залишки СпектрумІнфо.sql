@@ -31,13 +31,16 @@ insert into @ChemList values
 
 --select Abbr from @ChemList;
 
-select p.Код_поставщика
-	, p.ID 
-	, p.Код_поставки
-	, p.Масса_пост
+select --p.Код_поставщика,
+distinct
+	 p.ID 
+	, m.[SINFO-ID]
+	--, p.Код_поставки
+	--, p.Масса_пост
 	--, * 
 from tblПоставки p
 	inner join @ChemList cl on p.Код_поставщика = cl.Abbr
+	inner join Materials m on m.MatName = p.ID
 where [Масса_пост]>=50000
-order by p.Код_поставщика
-	, p.ID;
+order by --p.Код_поставщика,
+	 p.ID;
