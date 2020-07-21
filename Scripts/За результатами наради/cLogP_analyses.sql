@@ -18,3 +18,11 @@ from MaterialCalculatedParams mcp
 where mcp.cLogP >= 20 --or mcp.cLogP = 0
 order by mcp.cLogP
 ;
+
+select   round(mcp.cLogP-m.cLogP , 1) as diff, COUNT(*) as density
+from MaterialCalculatedParams mcp
+	inner join Materials m on m.MatID = mcp.MatID
+--where mcp.cLogP >= 20 --or mcp.cLogP = 0
+group by round(mcp.cLogP-m.cLogP , 1)
+order by round(mcp.cLogP-m.cLogP , 1)
+;
