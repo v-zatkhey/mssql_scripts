@@ -8,21 +8,22 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE VIEW [dbo].[vwClientRequests]
+--CREATE VIEW [dbo].[vwClientRequests]
+ALTER VIEW [dbo].[vwClientRequests]
 AS
-SELECT     dbo.tblClientRequests.ID, dbo.tblClientRequests.ClientID, dbo.Customers.CustName AS ClientCode, dbo.tblClientRequests.Number, dbo.tblClientRequests.AddDate, 
+SELECT     dbo.tblClientRequests.ID, dbo.tblClientRequests.ClientName, dbo.tblClientRequests.Number, dbo.tblClientRequests.AddDate, 
                       dbo.tblClientRequests.MsgText, dbo.tblПользователи.Пользователь AS AddEmploee, dbo.tblClientRequests.AnswerDate, dbo.tblClientRequests.AnswerText, 
                       tblПользователи_1.Пользователь AS AnswerEmployee, dbo.tblClientRequests.HasAnswer, dbo.tblЗапросы.Код_запроса AS QueryCode, 
                       dbo.tblЗаказы.Код_заказа AS OrderCode
-FROM         dbo.Customers INNER JOIN
-                      dbo.tblClientRequests ON dbo.Customers.CustID = dbo.tblClientRequests.ClientID INNER JOIN
-                      dbo.tblПользователи ON dbo.tblClientRequests.AddEmployee = dbo.tblПользователи.Код INNER JOIN
-                      dbo.tblПользователи AS tblПользователи_1 ON dbo.tblClientRequests.AnswerEmployee = tblПользователи_1.Код INNER JOIN
-                      dbo.tblЗапросы ON dbo.tblClientRequests.QueryID = dbo.tblЗапросы.Код INNER JOIN
+FROM                  dbo.tblClientRequests INNER JOIN
+                      dbo.tblПользователи ON dbo.tblClientRequests.AddEmployee = dbo.tblПользователи.Код left JOIN
+                      dbo.tblПользователи AS tblПользователи_1 ON dbo.tblClientRequests.AnswerEmployee = tblПользователи_1.Код left JOIN
+                      dbo.tblЗапросы ON dbo.tblClientRequests.QueryID = dbo.tblЗапросы.Код left JOIN
                       dbo.tblЗаказы ON dbo.tblClientRequests.OrderID = dbo.tblЗаказы.Код
 
 GO
 
+/*
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
    Begin PaneConfigurations = 
@@ -188,5 +189,5 @@ GO
 
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=2 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'vwClientRequests'
 GO
-
+*/
 
