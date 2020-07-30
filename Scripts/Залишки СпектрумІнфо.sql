@@ -31,16 +31,21 @@ insert into @ChemList values
 
 --select Abbr from @ChemList;
 
-select --p.Код_поставщика,
-distinct
+select --
+--distinct
 	 p.ID 
 	, m.[SINFO-ID]
-	--, p.Код_поставки
-	--, p.Масса_пост
+--	, p.Код_поставщика
+--	, p.Код_поставки
+	, ROUND( sum(p.Масса_пост),1) as Масса
 	--, * 
 from tblПоставки p
 	inner join @ChemList cl on p.Код_поставщика = cl.Abbr
 	inner join Materials m on m.MatName = p.ID
-where [Масса_пост]>=50000
+--where [Масса_пост]>=50000
+--where ISNULL(Масса_пост,0)>0
+group by p.ID 
+	, m.[SINFO-ID] 
+having sum(p.Масса_пост)>=50000
 order by --p.Код_поставщика,
 	 p.ID;
