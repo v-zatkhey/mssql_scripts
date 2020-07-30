@@ -11,7 +11,7 @@ GO
 --CREATE VIEW [dbo].[vwClientRequests]
 ALTER VIEW [dbo].[vwClientRequests]
 AS
-SELECT     dbo.tblClientRequests.ID, dbo.tblClientRequests.ClientName, dbo.tblClientRequests.Number, dbo.tblClientRequests.AddDate, 
+SELECT     dbo.tblClientRequests.ID, dbo.tblClientRequests.ClientCode, dbo.tblClientRequests.ClientName, dbo.tblClientRequests.Number, dbo.tblClientRequests.AddDate, 
                       dbo.tblClientRequests.MsgText, dbo.tblПользователи.Пользователь AS AddEmploee, dbo.tblClientRequests.AnswerDate, dbo.tblClientRequests.AnswerText, 
                       tblПользователи_1.Пользователь AS AnswerEmployee, dbo.tblClientRequests.HasAnswer, dbo.tblЗапросы.Код_запроса AS QueryCode, 
                       dbo.tblЗаказы.Код_заказа AS OrderCode

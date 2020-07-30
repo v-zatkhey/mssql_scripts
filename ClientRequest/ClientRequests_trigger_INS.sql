@@ -8,35 +8,58 @@ GO
 -- Create date: 27.07.2020
 -- Description:	фр=ормування номеру запиту.
 -- =============================================
-CREATE TRIGGER dbo.TR_tblClientRequests_INS 
---ALTER TRIGGER dbo.TR_tblClientRequests_INS 
+--CREATE TRIGGER dbo.TR_tblClientRequests_INS 
+ALTER TRIGGER dbo.TR_tblClientRequests_INS 
    ON  dbo.tblClientRequests
    AFTER INSERT
 AS 
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 	
-	declare @LastRqNumByClient table(ClientName varchar(127), RqNum int);
+	declare @LastRqNumByClient table(ClientCode nvarchar(5), RqNum int);
 	declare @NewRqNum table(ID int, RqNum int);
+	declare @UserID int;
 
+	-- nubbering by client
 	insert into @LastRqNumByClient
-	select ClientName, MAX(Number)
+	select ClientCode, MAX(Number)
 	from dbo.tblClientRequests
-	where ClientName in (select ClientName from inserted group by ClientName)
-	group by ClientName;
+	where isnull(ClientCode,'') in (select isnull(ClientCode,'') from inserted group by isnull(ClientCode,''))
+	group by ClientCode;
 	
 	insert into @NewRqNum(ID, RqNum)
-	select i.ID, NewNumber = isnull(l.RqNum,0) + ROW_NUMBER() over(partition by i.ClientName order by i.ID)
+	select i.ID, NewNumber = isnull(l.RqNum,0) + ROW_NUMBER() over(partition by isnull(i.ClientCode,'') order by i.ID)
 	from inserted i 
-		left join @LastRqNumByClient l on l.ClientName = i.ClientName;
+		left join @LastRqNumByClient l on isnull(l.ClientCode,'')  = isnull(i.ClientCode,'');
 		
 	update x
 	set Number = t.RqNum
 	from tblClientRequests x
 		inner join @NewRqNum t on t.ID = x.ID; 
-			
+	
+	-- fill ClientName
+	update x
+	set ClientName = c.Организация
+	from tblClientRequests x
+		inner join inserted i on i.ID = x.ID
+		inner join dbo.tblЗаказчики_full c on c.КодЗаказчика = x.ClientCode
+	where x.ClientName is null;  
+		
+	-- add_empl_id
+	select @UserID = (select top 1 Код from dbo.tblПользователи where SYSTEM_USER = 'IFLAB\'+ WinLogin);
+	update x
+	set AddEmployee = @UserID
+	from tblClientRequests x
+		inner join inserted i on i.ID = x.ID
+	where x.AddEmployee is null;  
+	
+	-- timestamp
+	update x
+	set AddDate = GETDATE()
+	from tblClientRequests x
+		inner join inserted i on i.ID = x.ID
+	where x.AddDate is null;  
+				
 	    
 END
 GO
