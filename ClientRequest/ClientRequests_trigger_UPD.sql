@@ -20,8 +20,8 @@ BEGIN
     if update(AnswerText)
     begin
 		update c
-		set HasAnswer = 1,
-			AnswerEmployee = @UserID
+		set HasAnswer = 1
+			,AnswerEmployee = @UserID
 			,AnswerDate = GETDATE()
 		from tblClientRequests c 
 			inner join deleted d on d.ID = c.ID
