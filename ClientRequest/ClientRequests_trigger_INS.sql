@@ -47,11 +47,18 @@ BEGIN
 		
 	-- add_empl_id
 	select @UserID = (select top 1 Код from dbo.tblПользователи where SYSTEM_USER = 'IFLAB\'+ WinLogin);
+	
 	update x
 	set AddEmployee = @UserID
 	from tblClientRequests x
 		inner join inserted i on i.ID = x.ID
 	where x.AddEmployee is null;  
+
+	update x
+	set AnswerEmployee = @UserID
+	from tblClientRequests x
+		inner join inserted i on i.ID = x.ID
+	where x.AnswerEmployee is null and x.HasAnswer !=0 ;  
 	
 	-- timestamp
 	update x
@@ -59,6 +66,12 @@ BEGIN
 	from tblClientRequests x
 		inner join inserted i on i.ID = x.ID
 	where x.AddDate is null;  
+
+	update x
+	set AnswerDate = GETDATE()
+	from tblClientRequests x
+		inner join inserted i on i.ID = x.ID
+	where x.AnswerDate is null and x.HasAnswer !=0 ;  
 				
 	    
 END
