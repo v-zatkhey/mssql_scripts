@@ -2,6 +2,12 @@ use Chest35
 go
 
 select *  from tblClientRequests;
+select * 
+from tblClientRequests cr 
+	inner join tblClientRequestDetails d on d.RequestID = cr.ID
+where d.IDNumber = 'F6545-4035'
+;
+
 --
 /* 
 select * from tblClientRequestDetails

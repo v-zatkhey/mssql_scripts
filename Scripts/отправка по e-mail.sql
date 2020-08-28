@@ -73,3 +73,9 @@ SELECT * FROM msdb.dbo.sysmail_allitems  WHERE mailitem_id > 536;
 -- настройка параметров 
 exec msdb..sysmail_help_configure_sp;
 exec msdb..sysmail_configure_sp   @parameter_name = 'MaxFileSize', @parameter_value = '12000000'  -- максимальный размер приложенного файла, по умолчанию - 1000000
+
+SELECT send_request_user , [subject] , MAX(send_request_date) as LastDate 
+FROM msdb.dbo.sysmail_allitems 
+where send_request_date > '20200101'
+group by send_request_user , [subject] 
+order by [subject], MAX(send_request_date)
