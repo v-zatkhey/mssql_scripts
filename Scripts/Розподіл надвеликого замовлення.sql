@@ -91,3 +91,73 @@ from tblСписокЗаказов s
 where s.Код_заказчика = '01136' and s.Код_заказа = 'z00123'
 ;
 */
+go
+
+--- 1136-z00124
+
+select ID, Box_номер , Box_строка , Box_колонка 
+	, ROW_NUMBER() over( order by ID) as Num
+	, char((ROW_NUMBER() over( order by ID) -1)%8+65) as RowIndx  
+	, ((ROW_NUMBER() over( order by ID) -1)/8)%10+2 as ColNum  
+	, ((ROW_NUMBER() over( order by ID) -1)/80) + 1 + 3424 as BoxNum
+from tblСписокЗаказов 
+where Код_заказчика = '01136' and Код_заказа  = 'z00124'
+order by ID;
+
+
+select *
+into _tmp_СписокЗаказа_01136_z00124_back
+from tblСписокЗаказов 
+where Код_заказчика = '01136' and Код_заказа  = 'z00124'
+order by ID;
+go
+
+
+declare @Discrim table(ID varchar(10), RowIndx char(1), ColIndx int, BoxNum int)
+/*
+begin tran
+
+	insert into @Discrim
+	select ID
+	--	, ROW_NUMBER() over( order by ID) as Num
+		, char((ROW_NUMBER() over( order by ID) -1)%8+65) as RowIndx  
+		, ((ROW_NUMBER() over( order by ID) -1)/8)%10+2 as ColIndx  
+		, ((ROW_NUMBER() over( order by ID) -1)/80) + 1 + 3424 as BoxNum
+	from tblСписокЗаказов
+	where Код_заказчика = '01136' and Код_заказа  = 'z00124'
+	order by ID;
+	
+	--update tblСписокЗаказов
+	
+	update s
+	set Box_номер = d.BoxNum
+		, Box_строка = d.RowIndx 
+		, Box_колонка = d.ColIndx 
+	from @Discrim d
+		inner join tblСписокЗаказов s on  s.Код_заказчика = '01136' 
+										and s.Код_заказа  = 'z00124' 
+										and s.ID = d.ID; 
+
+commit
+*/
+-- вказати обрану під час відправки на зважування поставку
+select s.ID, v.PickedLotCode, s.Код_поставщика, p.Код_поставщика
+	, s.Код_поставки, p.Код_поставки 
+from tblСписокЗаказов s 
+	inner join tblВзвешивание v on v.Заказ =  s.Код_заказчика + '-' + s.Код_заказа
+		and v.ID = s.ID 
+	inner join tblПоставки p on p.Код = v.PickedLotCode 
+where s.Код_заказчика = '01136' and s.Код_заказа = 'z00124'
+;
+
+/*
+update s
+set Код_поставщика = p.Код_поставщика
+	, Код_поставки = p.Код_поставки 
+from tblСписокЗаказов s 
+	inner join tblВзвешивание v on v.Заказ =  s.Код_заказчика + '-' + s.Код_заказа
+		and v.ID = s.ID 
+	inner join tblПоставки p on p.Код = v.PickedLotCode 
+where s.Код_заказчика = '01136' and s.Код_заказа = 'z00124'
+;
+*/
